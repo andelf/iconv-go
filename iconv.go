@@ -6,7 +6,7 @@ some convenient interface implementations like a Reader and Writer.
 package iconv
 
 // All in one Convert method, rather than requiring the construction of an iconv.Converter
-func Convert(input []byte, output []byte, fromEncoding string, toEncoding string) (bytesRead int, bytesWritten int, err error) {
+func Convert(input, output []byte, fromEncoding, toEncoding string) (bytesRead, bytesWritten int, err error) {
 	// create a temporary converter
 	converter, err := NewConverter(fromEncoding, toEncoding)
 
@@ -32,7 +32,7 @@ func Convert(input []byte, output []byte, fromEncoding string, toEncoding string
 }
 
 // All in one ConvertString method, rather than requiring the construction of an iconv.Converter
-func ConvertString(input string, fromEncoding string, toEncoding string) (output string, err error) {
+func ConvertString(input, fromEncoding, toEncoding string) (output string, err error) {
 	// create a temporary converter
 	converter, err := NewConverter(fromEncoding, toEncoding)
 

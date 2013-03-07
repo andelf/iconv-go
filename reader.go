@@ -13,7 +13,7 @@ type Reader struct {
 	err               error
 }
 
-func NewReader(source io.Reader, fromEncoding string, toEncoding string) (*Reader, error) {
+func NewReader(source io.Reader, fromEncoding, toEncoding string) (*Reader, error) {
 	// create a converter
 	converter, err := NewConverter(fromEncoding, toEncoding)
 
