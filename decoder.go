@@ -29,3 +29,11 @@ func (decoder *Decoder) Encode(source []byte) (string, error) {
 	}
 	return string(output), errors.New("source string too large")
 }
+
+func (decoder *Decoder) MustEncode(source []byte) string {
+	output, err := decoder.Encode(source)
+	if err != nil {
+		panic(err)
+	}
+	return output
+}
