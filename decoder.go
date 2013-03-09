@@ -17,7 +17,7 @@ func NewDecoder(encoding string) (*Decoder, error) {
 }
 
 
-func (decoder *Decoder) Encode(source []byte) (string, error) {
+func (decoder *Decoder) Decode(source []byte) (string, error) {
 	inputLength := len(source)
 	output := make([]byte, inputLength*3)
 	read, _, err := decoder.converter.Convert(source, output)
@@ -30,8 +30,8 @@ func (decoder *Decoder) Encode(source []byte) (string, error) {
 	return string(output), errors.New("source string too large")
 }
 
-func (decoder *Decoder) MustEncode(source []byte) string {
-	output, err := decoder.Encode(source)
+func (decoder *Decoder) MustDecode(source []byte) string {
+	output, err := decoder.Decode(source)
 	if err != nil {
 		panic(err)
 	}
